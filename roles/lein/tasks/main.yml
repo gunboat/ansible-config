@@ -1,0 +1,12 @@
+---
+
+- name: download leiningen
+  get_url:
+    url: https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+    dest: /tmp/lein
+
+- name: install leiningen
+  copy:
+    src: /tmp/lein
+    dest: /usr/local/bin/lein
+    mode: 0755

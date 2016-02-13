@@ -1,0 +1,28 @@
+---
+
+- name: download IntelliJ
+  get_url:
+    url: '{{intellij_url}}'
+    dest: '/tmp/{{intellij_archive}}'
+  register: download
+
+- name: install IntelliJ
+  unarchive:
+    copy: no
+    dest: '/opt'
+    src: '/tmp/{{intellij_archive}}'
+  when: download.changed
+
+- name: link IntelliJ
+  file:
+    src: '/opt/{{intellij_subdir}}'
+    dest: '/opt/intellij'
+    state: link
+  when: download.changed
+
+- name: update $PATH
+  copy:
+    src: 'etc/profile.d/intellij.sh'
+    dest: '/etc/profile.d/intellij.sh'
+    mode: 644
+  when: download.changed

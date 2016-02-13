@@ -1,0 +1,5 @@
+---
+
+intellij_archive: "ideaIU-{{intellij_ver}}.tar.gz"
+intellij_url: "{{intellij_mirror}}/{{intellij_archive}}"
+intellij_subdir: "idea-IU-{{intellij_subdir_ver}}"

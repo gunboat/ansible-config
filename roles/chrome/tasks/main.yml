@@ -1,0 +1,13 @@
+---
+
+- name: install pycurl
+  apt: name=python-pycurl state=present
+
+- name: get Chrome key
+  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
+
+- name: add Chrome PPA
+  apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' state=present update_cache=yes
+
+- name: install Chrome browser
+  apt: name=google-chrome-stable state=present

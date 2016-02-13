@@ -1,0 +1,33 @@
+---
+
+- name: Gradle | download
+  get_url:
+    url: "https://services.gradle.org/distributions/gradle-{{gradle_version}}-all.zip"
+    dest: "/tmp/gradle-{{gradle_version}}-all.zip"
+  register: downloaded
+
+- name: Gradle | unpack Gradle
+  unarchive: src="/tmp/gradle-{{gradle_version}}-all.zip" dest="/usr/local"
+  when: downloaded.changed
+
+- name: Gradle | rename
+  file:
+    src: '/usr/local/gradle-{{gradle_version}}'
+    dest: '/usr/local/gradle'
+    state: link
+  when: downloaded.changed
+
+- name: Gradle | permissions
+  file:
+    path: '/usr/local/gradle/bin'
+    state: directory
+    mode: 0755
+    recurse: yes
+  when: downloaded.changed
+
+- name: Gradle | update $PATH
+  copy:
+    src: 'etc/profile.d/gradle.sh'
+    dest: '/etc/profile.d/gradle.sh'
+    mode: 0644
+  when: downloaded.changed

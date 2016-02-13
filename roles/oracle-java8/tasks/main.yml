@@ -1,0 +1,7 @@
+---
+
+- name: add webupd8 PPA
+  apt_repository: repo='ppa:webupd8team/java' state=present update_cache=yes
+
+- name: install Oracle JDK 8
+  apt: name=oracle-java8-installer state=present

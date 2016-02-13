@@ -1,0 +1,28 @@
+---
+
+- name: download Groovy
+  get_url:
+    url: "https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-{{groovy_version}}.zip"
+    dest: "/tmp/groovy-{{groovy_version}}.zip"
+  register: download
+
+- name: unpack Groovy
+  unarchive:
+    src: '/tmp/groovy-{{groovy_version}}.zip'
+    dest: '/usr/local'
+    copy: no
+  when: download.changed
+
+- name: install Groovy
+  file:
+    src: '/usr/local/groovy-{{groovy_version}}'
+    dest: '/usr/local/groovy'
+    state: link
+  when: download.changed
+
+- name: edit $PATH
+  copy:
+    src: 'etc/profile.d/groovy.sh'
+    dest: '/etc/profile.d/groovy.sh'
+    mode: 0644
+  when: download.changed

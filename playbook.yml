@@ -1,0 +1,21 @@
+---
+
+- name: Configuration of my environment
+  hosts: localhost
+  become: yes
+  vars_files:
+    - vars/config.yml
+  roles:
+    - chrome
+    - docker
+    - oracle-java7
+    - oracle-java8
+    - git
+    - intellij
+    - lein
+    - gradle
+    - groovy
+    - maven
+  tasks:
+    - name: apt-get update
+      apt: upgrade=dist
