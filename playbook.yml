@@ -17,6 +17,8 @@
     - gradle
     - groovy
     - maven
+    - nodejs
+    - npm-packages
   tasks:
     - name: apt-get update
       apt: upgrade=dist

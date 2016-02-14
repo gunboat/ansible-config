@@ -1,0 +1,6 @@
+---
+
+npm_packages:
+  - bower
+  - coffee-script
+  - docco
