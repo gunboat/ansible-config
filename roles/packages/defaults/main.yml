@@ -1,0 +1,6 @@
+---
+
+simple_packages:
+    - httpie
+    - jq
+    - git
