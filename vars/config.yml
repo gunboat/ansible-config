@@ -5,3 +5,5 @@ config:
   lastname: Morris
   email: mitchell@morrisland.com
   login: mgm
+
+java_version: java8

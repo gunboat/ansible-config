@@ -5,3 +5,11 @@
 
 - name: install Oracle JDK 8
   apt: name=oracle-java8-installer state=present
+
+- name: use Oracle JDK 8 for CLI
+  command: update-java-alternatives -s java-8-oracle
+  when: java_version == 'java8'
+
+- name: set environment vars for Oracle JDK 8
+  apt: name=oracle-java8-set-default
+  when: java_version == 'java8'

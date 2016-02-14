@@ -4,6 +4,7 @@
   get_url:
     url: '{{intellij_url}}'
     dest: '/tmp/{{intellij_archive}}'
+    checksum: '{{intellij_checksum}}'
   register: download
 
 - name: install IntelliJ

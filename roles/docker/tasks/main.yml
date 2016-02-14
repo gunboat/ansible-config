@@ -11,5 +11,14 @@
 
 - name: install docker engine
   apt: name=docker-engine state=present
-  notify:
-    - start docker
+  register: install
+
+- name: start docker engine
+  service: name=docker state=started
+  when: install.changed
+
+- name: add user to docker group
+  user:
+    append: yes
+    groups: docker
+    name: '{{ ansible_env.USER }}'

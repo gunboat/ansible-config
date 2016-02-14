@@ -4,6 +4,7 @@
   get_url:
     url: 'http://mirror.tcpdiag.net/apache/maven/maven-3/{{maven_version}}/binaries/apache-maven-{{maven_version}}-bin.tar.gz'
     dest: '/tmp/maven-{{maven_version}}-bin.tar.gz'
+    checksum: '{{maven_checksum}}'
   register: download
 
 - name: unpack maven

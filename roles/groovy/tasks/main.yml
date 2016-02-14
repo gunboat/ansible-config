@@ -4,6 +4,7 @@
   get_url:
     url: "https://bintray.com/artifact/download/groovy/maven/apache-groovy-binary-{{groovy_version}}.zip"
     dest: "/tmp/groovy-{{groovy_version}}.zip"
+    checksum: '{{groovy_checksum}}'
   register: download
 
 - name: unpack Groovy

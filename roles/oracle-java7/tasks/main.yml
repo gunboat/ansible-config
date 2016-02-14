@@ -5,3 +5,11 @@
 
 - name: install Oracle JDK 7
   apt: name=oracle-java7-installer state=present
+
+- name: use Oracle JDK 7 for CLI
+  command: update-java-alternatives -s java-7-oracle
+  when: java_version == 'java7'
+
+- name: set environment vars for Oracle JDK 7
+  apt: name=oracle-java7-set-default
+  when: java_version == 'java7'

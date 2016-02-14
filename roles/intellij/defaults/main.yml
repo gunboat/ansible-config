@@ -2,3 +2,4 @@
 intellij_ver : "15.0.3"
 intellij_subdir_ver : "143.1821.5"
 intellij_mirror : "http://download.jetbrains.com/idea"
+intellij_checksum: 'sha1:9be64f554791649890dee37e92cd4741f7c01550'
